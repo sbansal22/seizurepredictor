@@ -30,12 +30,35 @@ body {font-family: "Lato", sans-serif}
 
   <!-- The Description Section -->
   <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="description">
-    <h2 class="w3-wide">FUTURE DEVELOPMENTS</h2>
-    <p class="w3-justify">Currently, the Fourier analysis we are performing projects the signal on many cosine waves at different frequencies to find the frequencies present in the signal.  However, many of the common EEG waves that appear are not cosine waves.</p>
-    <p class="w3-justify">To increase the accuracy and confidence in our algorithm, an interesting future development would be to perform Fourier analysis with common seizure EEG waves as opposed to cosine waves.  In doing this, we would be able to sweep across the waveforms that you would expect to see at various frequencies in order to have a more accurate projection.</p>
-    <p class="w3-justify">As an example, this could be done with a wavelet transform.  Some resources to information on wavelet transforms can be found below.</p>
-    <ul><a href="https://en.wikipedia.org/wiki/Wavelet_transform">Wavelet Transform</a></ul>
-    <ul><a href="https://en.wikipedia.org/wiki/List_of_Fourier-related_transforms">Other Transformations</a></ul>
+    <h2 class="w3-wide">ANALYSIS</h2>
+    <h4 class="w3-wide">WE WERE ABLE TO CORRECTLY IDENTIFY IF A SEIZURE WAS PRESENT IN AN EEG SIGNAL 88.4% OF THE TIME!</h4>
+    <p class="w3-justify">The dataset contains the EEG signals for five different people.  The data we used during this analysis can be found <a href="http://epileptologie-bonn.de/cms/front_content.php?idcat=193&lang=3&changelang=3">here.</a></p>
+    <h3 class="w3-wide">DATASET</h3>
+    <div class="w3-justify">
+    <p class="w3-justify">The data contains 100 text files for each person each consists of 4096 samples collected at a sampling rate of 173.61 Hz.  The data has been selected and clipped for the best signals present in the entire reading.</p>
+      <p>
+      <ul type="A">
+        <li>Set Z contains data from a healthy person with their eyes open</li>
+        <li>Set O contains data from a healthy person with their eyes closed</li>
+        <li>Set N contains data from someone with epilepsy but does not contain any seizures</li>
+        <li>Set F contains data from someone with epilepsy but does not contain any seizures</li>
+        <li>Set S only contains seizure activity</li>
+      </ul>
+    </p>
+     </div>
+    <h3 class="w3-wide">PREPARING DATA</h3>
+    <p class="w3-justify">The first step of our analysis is to put the data into column vectors in MATLAB.  The code we used for this is found below:</p>
+    <!-- INPUT CODE -->
+    <p class="w3-justify">This function creates a 4097 by 100 matrix for each dataset.  In doing this, each column represents a single text file and each row is the time series data contained within an individual text file.</p>
+  
+    <h3 class="w3-wide">CLASSIFYING DATA</h3>
+    <p class="w3-justify">We separate the data into a test and training set.  As the data has already been randomized by the collector of the data, we select the training set as the first 50 columns and the test set for the last 50.  Once we have done this, we perform a discrete Fourier transform on the data to find out how much of each frequency is present.  As we explained on the scientific background tab, an increased frequency of the signal and increased magnitude are two common characteristics of seizure EEG readings.  This is depicted in the Fourier analysis of the following two signals:</p>
+      <img src="EEG Comparison.jpg" class="w3-round w3-margin-bottom" alt="Neuron" style="width:120%" class="center">
+    <p class="w3-justify">We use an algorithm similar to the faces algorithm from QEA 1 Module 2 on the Fourier transformations of each of the training sets.  We perform principal component analysis (PCA) on the training set to define a new set of basis vectors for the data.  Each basis or Eigenvector represents a frequency that is the most variant across the dataset.  A visualization of an eigenfrequency can be found below:</p>
+      <img src="eigenfrequency.jpg" class="w3-round w3-margin-bottom" alt="Neuron" style="width:120%" class="center">
+    <p class="w3-justify">The spikes correspond with the frequencies that have the most variation across the training set. For example, we can see the highest spike occurring at 22 Hz.  This means that there is lots of variation (because it is one of the first eigenfrequencies from PCA) at this frequency in the training set.</p>
+    <p class="w3-justify">Using the test set, we project each of the Fouier transformations onto the basis vectors defined by the PCA of the training set.  We then find the Euclidean Distance between the training and test sets in order to classify the test signal as either a seizure or not.  The code for this classification can be found below:</p>
+  
   </div>
 	
 <!-- The Contact Section -->

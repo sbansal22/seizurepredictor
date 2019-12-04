@@ -122,6 +122,10 @@ train_weights = U' * train;
 figure
 % Use the Third EigenFFT for the 26 Hz signal
 plot(frequencies_shifted,abs(U(:,3)))
+title('Eigenfrequency')
+xlabel('Frequency [Hz]')
+ylabel('Amplitude')
+axis([-120 120 0 0.12])
 
 %%
 load('F.mat');
