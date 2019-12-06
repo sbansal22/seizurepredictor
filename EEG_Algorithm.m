@@ -20,27 +20,42 @@ frequencies_shifted = (linspace(-pi*Fs, Fs*(pi - (2*pi)/N_shift), N_shift) + (Fs
 
 ffft = fft(F);
 ffft = fftshift(ffft);
+ffft = Rangefinder(ffft,1600,2499);
 
 nfft = fft(N);
 nfft = fftshift(nfft);
+nfft = Rangefinder(nfft,1600,2499);
 
 offt = fft(O);
 offt = fftshift(offt);
+offt = Rangefinder(offt,1600,2499);
 
 sfft = fft(S);
 sfft = fftshift(sfft);
+sfft = Rangefinder(sfft,1600,2499);
 
 zfft = fft(Z);
 zfft = fftshift(zfft);
+zfft = Rangefinder(zfft,1600,2499);
 
-
+ 
 data = [ffft,nfft,offt,sfft,zfft];
 [U,SS,VV] = svd(data,'econ');
 train_weights = U' * data;
 
-figure
-plot(frequencies_shifted,abs(U(:,1)))
 
+x = U(:,2);
+N = length(x);
+
+% for i = 4:N-3
+%     Y(i) = (x(i-3)+x(i-2)+x(i-1)+x(i)+x(i+1)+x(i+2)+x(i+3))/3;
+% end
+
+Y = movmean(x,6);
+
+figure
+plot(frequencies_shifted,abs(Y))
+axis([-120 120 0 0.12])
 %%
 re = U * train_weights;
 figure
