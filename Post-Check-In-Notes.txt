@@ -1,6 +1,6 @@
 () dynamics of your motion model(done) + degrees of freedom(do the circuit) + time derivatives and frequencies
 () Explain iterations of your dynamics
-() Demonstrate how the product would work in reality (Add in the scientific background)
+(D) Demonstrate how the product would work in reality (Add in the scientific background)
 () More background on how the data was collected
 () REALLY NEED EQUATIONS (Add in the mathematical background)
 () PLOTS (Algorithm section)
