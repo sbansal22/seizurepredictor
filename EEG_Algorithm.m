@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 clear all
 close all
 
@@ -189,7 +188,6 @@ accuracy = counter / length(test_weights(:,1)) * 100
 
 % NEXT STEPS
 %  - only consider a range of frequencies
-=======
 clear all
 close all
 
@@ -380,5 +378,4 @@ accuracy = counter / length(test_weights(:,1)) * 100
 
 % NEXT STEPS
 %  - only consider a range of frequencies
->>>>>>> 50204d487baa94569826b69179032cfed9816fbe
 %  - combination of magnitude and frequency
