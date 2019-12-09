@@ -1,6 +1,6 @@
-Talk about data selecting and clipping
-Say graphs are from one person
-Math Equations
-Talk about model with specific frequencies
-Circuit stuff
-Cite first image
+B - Math Equations
+T - Talk about model with specific frequencies
+S - Circuit stuff
+S - Cite first image
+T - Add reference to Turk paper and CALTECH circuit
+T - INCLUDE CODE
