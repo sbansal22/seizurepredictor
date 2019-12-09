@@ -35,12 +35,16 @@ body {font-family: "Lato", sans-serif}
 	<div class="w3-left-align">
 	  <p>
 		<ol type="A">
-  			<li>We create a list of frequencies that are shifted, or frequencies centered at zero radians per second. We do this so that the low frequency components are close to zero and the large frequency components are symmetric, and on the two edges.</li>
-  			<li>We compute the Shifted Fast Fourier Transform of the EEG datasets F(non-seizure), N(non-seizure), O(non-seizure), S(seizure), and Z(non-seizure). The fast fourier transform is computed by using a fast Fourier transform algorithm to compute the discrete fourier transform. The result of the above is then rearranged by MATLAB, which moves the zero-frequency component to the center of the array.</li>
+   			<li>We compute the Shifted Fast Fourier Transform of the EEG datasets F(non-seizure), N(non-seizure), O(non-seizure), S(seizure), and Z(non-seizure). The fast fourier transform is computed by using a fast Fourier transform algorithm to compute the discrete fourier transform. The result of the above is then rearranged by MATLAB, which moves the zero-frequency component to the center of the array.</li>
+			<img src="Scanned from a Xerox Multifunction Printer-1 - Copy.jpg" class="w3-round w3-margin-bottom" alt="Types of EEG Waves" style="width:100%" class="center">
+			<li>We create a list of frequencies that are shifted, or frequencies centered at zero radians per second. We do this so that the low frequency components are close to zero and the large frequency components are symmetric, and on the two edges.</li>
   			<li>We perform Singular Value Decomposition on the data in order to compress the data to weights to be used as linear combinations.</li>
+			<img src="Scanned from a Xerox Multifunction Printer-1.jpg" class="w3-round w3-margin-bottom" alt="Types of EEG Waves" style="width:100%" class="center">
+			<img src="Scanned from a Xerox Multifunction Printer-2 - Copy.jpg" class="w3-round w3-margin-bottom" alt="Types of EEG Waves" style="width:100%" class="center">
 			<li>We do some post-processing to normalize the data for easy visualizations.</li>
 			<li>We split the train and the test data to avoid biases in the accuracy calculation</li>
 			<li>We find the magnitude of the difference between the each of the test data and each of the train data sets to find out relations</li>
+			<img src="Scanned from a Xerox Multifunction Printer-2.jpg" class="w3-round w3-margin-bottom" alt="Types of EEG Waves" style="width:100%" class="center">		
 			<li>We assign accuracy based on if the relations are matched correctly or not</li>
 		</ol>
 	</p>
