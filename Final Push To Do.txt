@@ -1,6 +1,7 @@
 B - Math Equations
 T - Talk about model with specific frequencies
-S - Circuit stuff
 S - Cite first image
-T - Add reference to Turk paper and CALTECH circuit
 T - INCLUDE CODE
+B - Edit ANALYSIS SECTION
+T - ADD COMMON FREQUENCIES YOU SEE
+S - Fix slideshow images
