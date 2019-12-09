@@ -1,7 +1,2 @@
-B - Math Equations
-T - Talk about model with specific frequencies
-S - Cite first image
 T - INCLUDE CODE
 B - Edit ANALYSIS SECTION
-T - ADD COMMON FREQUENCIES YOU SEE
-S - Fix slideshow images

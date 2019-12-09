@@ -1,4 +1,4 @@
-% TEST CODE %
+% TRAINING CODE %
 
 clear all
 close all
@@ -56,6 +56,7 @@ ylabel('Amplitude')
 axis([-120 120 0 0.12])
 
 %%
+% TEST CODE %
 load('F.mat');
 load('N.mat');
 load('O.mat');
@@ -89,7 +90,6 @@ o = mean(abs(offt));
 s = mean(abs(sfft));
 z = mean(abs(zfft));
 
-%threshold = 3*10^3;
 mat = [s,f,n,o,z];
 counter = 0;
 for l=1:length(mat)

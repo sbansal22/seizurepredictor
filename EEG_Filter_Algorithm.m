@@ -1,8 +1,7 @@
+% TRAINING CODE %
+
 clear all
 close all
-
-%%
-% TRAINING DATA
 
 load('F.mat');
 load('N.mat');
@@ -20,12 +19,8 @@ Fs = 173.61;
 N_shift = length(F);
 frequencies_shifted = (linspace(-pi*Fs, Fs*(pi - (2*pi)/N_shift), N_shift) + (Fs*pi)/(N_shift)*mod(N_shift, 2))';
 
-% 88 %
 lower_filter = 1600;
 higher_filter = 2499;
-
-%lower_filter = 1900;
-%higher_filter = 2100;
 
 ffft = fft(F);
 ffft = fftshift(ffft);
@@ -76,7 +71,7 @@ for l=1:size(U,2)
 end
 
 %%
-% TEST DATA
+% TEST CODE %
 load('F.mat');
 load('N.mat');
 load('O.mat');
