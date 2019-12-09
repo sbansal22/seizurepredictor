@@ -1,6 +1,6 @@
-( )Cite the images
+(D)Cite the images
 ( )Selecting and clipping of data*
-( )Clearer spike labels for the image
+(D)Clearer spike labels for the image
 (D)Highlight that it is only 5 people
 (D)Text of the axes bigger - especially the exponents
 ( )Worth saying that the graphs were for the same and one person
