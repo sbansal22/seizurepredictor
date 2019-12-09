@@ -1,0 +1,216 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Device:R R2
+U 1 1 5DEDC99A
+P 5100 3500
+F 0 "R2" V 4893 3500 50  0000 C CNN
+F 1 "R_100K" V 4984 3500 50  0000 C CNN
+F 2 "" V 5030 3500 50  0001 C CNN
+F 3 "~" H 5100 3500 50  0001 C CNN
+	1    5100 3500
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R4
+U 1 1 5DEDD354
+P 5900 3500
+F 0 "R4" V 5693 3500 50  0000 C CNN
+F 1 "R_100K" V 5784 3500 50  0000 C CNN
+F 2 "" V 5830 3500 50  0001 C CNN
+F 3 "~" H 5900 3500 50  0001 C CNN
+	1    5900 3500
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R1
+U 1 1 5DEDDC1D
+P 4500 4100
+F 0 "R1" H 4570 4146 50  0000 L CNN
+F 1 "R_1.8M" H 4150 4050 50  0000 L CNN
+F 2 "" V 4430 4100 50  0001 C CNN
+F 3 "~" H 4500 4100 50  0001 C CNN
+	1    4500 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C1
+U 1 1 5DEDE433
+P 4800 4100
+F 0 "C1" H 4915 4146 50  0000 L CNN
+F 1 "C_7nF" H 4900 3950 50  0000 L CNN
+F 2 "" H 4838 3950 50  0001 C CNN
+F 3 "~" H 4800 4100 50  0001 C CNN
+	1    4800 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R3
+U 1 1 5DEDE67D
+P 5450 4100
+F 0 "R3" H 5520 4146 50  0000 L CNN
+F 1 "R_1.8M" H 5100 4050 50  0000 L CNN
+F 2 "" V 5380 4100 50  0001 C CNN
+F 3 "~" H 5450 4100 50  0001 C CNN
+	1    5450 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C2
+U 1 1 5DEDE8DD
+P 5750 4100
+F 0 "C2" H 5865 4146 50  0000 L CNN
+F 1 "C_7nF" H 5850 3950 50  0000 L CNN
+F 2 "" H 5788 3950 50  0001 C CNN
+F 3 "~" H 5750 4100 50  0001 C CNN
+	1    5750 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C3
+U 1 1 5DEDF7A3
+P 6700 4100
+F 0 "C3" H 6815 4146 50  0000 L CNN
+F 1 "C_7nF" H 6800 3950 50  0000 L CNN
+F 2 "" H 6738 3950 50  0001 C CNN
+F 3 "~" H 6700 4100 50  0001 C CNN
+	1    6700 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR02
+U 1 1 5DEE013D
+P 4150 4650
+F 0 "#PWR02" H 4150 4400 50  0001 C CNN
+F 1 "GND" H 4155 4477 50  0000 C CNN
+F 2 "" H 4150 4650 50  0001 C CNN
+F 3 "" H 4150 4650 50  0001 C CNN
+	1    4150 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR01
+U 1 1 5DEE036D
+P 4100 3450
+F 0 "#PWR01" H 4100 3300 50  0001 C CNN
+F 1 "VCC" H 4117 3623 50  0000 C CNN
+F 2 "" H 4100 3450 50  0001 C CNN
+F 3 "" H 4100 3450 50  0001 C CNN
+	1    4100 3450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4100 3450 4100 3500
+Wire Wire Line
+	4100 3500 4650 3500
+Wire Wire Line
+	6050 3500 6550 3500
+Wire Wire Line
+	6550 4550 5600 4550
+Wire Wire Line
+	4150 4550 4150 4650
+Wire Wire Line
+	5450 4250 5450 4400
+Wire Wire Line
+	5450 4400 5600 4400
+Wire Wire Line
+	5750 4400 5750 4250
+Wire Wire Line
+	5600 4400 5600 4550
+Connection ~ 5600 4400
+Wire Wire Line
+	5600 4400 5750 4400
+Connection ~ 5600 4550
+Wire Wire Line
+	4800 3950 4800 3800
+Wire Wire Line
+	4800 3800 4650 3800
+Wire Wire Line
+	4650 3500 4650 3800
+Connection ~ 4650 3500
+Wire Wire Line
+	4650 3500 4950 3500
+Wire Wire Line
+	4500 3950 4500 3800
+Wire Wire Line
+	4500 3800 4650 3800
+Connection ~ 4650 3800
+Wire Wire Line
+	4500 4250 4500 4400
+Wire Wire Line
+	4500 4400 4650 4400
+Wire Wire Line
+	4800 4400 4800 4250
+Wire Wire Line
+	4650 4400 4650 4550
+Wire Wire Line
+	4150 4550 4650 4550
+Connection ~ 4650 4400
+Wire Wire Line
+	4650 4400 4800 4400
+Connection ~ 4650 4550
+Wire Wire Line
+	4650 4550 5600 4550
+Wire Wire Line
+	6400 4400 6550 4400
+Wire Wire Line
+	6700 4250 6700 4400
+Wire Wire Line
+	6400 4400 6400 4250
+Connection ~ 6550 4400
+Wire Wire Line
+	6550 4400 6700 4400
+Wire Wire Line
+	6550 4400 6550 4550
+Wire Wire Line
+	5250 3500 5600 3500
+Wire Wire Line
+	5450 3800 5600 3800
+Wire Wire Line
+	5750 3800 5750 3950
+Wire Wire Line
+	5450 3800 5450 3950
+Wire Wire Line
+	6400 3800 6550 3800
+Wire Wire Line
+	6400 3800 6400 3950
+Wire Wire Line
+	6700 3800 6700 3950
+Wire Wire Line
+	5600 3800 5600 3500
+Connection ~ 5600 3800
+Wire Wire Line
+	5600 3800 5750 3800
+Connection ~ 5600 3500
+Wire Wire Line
+	5600 3500 5750 3500
+Wire Wire Line
+	6550 3800 6550 3500
+Connection ~ 6550 3800
+Wire Wire Line
+	6550 3800 6700 3800
+$Comp
+L Device:R R5
+U 1 1 5DEDF121
+P 6400 4100
+F 0 "R5" H 6470 4146 50  0000 L CNN
+F 1 "R_1.8M" H 6050 4050 50  0000 L CNN
+F 2 "" V 6330 4100 50  0001 C CNN
+F 3 "~" H 6400 4100 50  0001 C CNN
+	1    6400 4100
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC
