@@ -1,6 +1,4 @@
-% TRAINING CODE %
-
-
+% TRAINING CODE
 clear all
 close all
 
@@ -49,7 +47,7 @@ ylabel('Amplitude') % set the y-label of the plot
 axis([-120 120 0 0.12]) % set the axis limits
 
 %%
-% TEST CODE%
+% TEST CODE
 
 load('F.mat'); % Load the dataset F
 load('N.mat'); % Load the dataset N

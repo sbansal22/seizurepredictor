@@ -66,97 +66,95 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><pre class="codeinput"><span class="comment">% TRAINING CODE %</span>
-
-
+  </style></head><body><div class="content"><pre class="codeinput"><span class="comment">% TRAINING CODE</span>
 clear <span class="string">all</span>
 close <span class="string">all</span>
 
-load(<span class="string">'F.mat'</span>);
-load(<span class="string">'N.mat'</span>);
-load(<span class="string">'O.mat'</span>);
-load(<span class="string">'S.mat'</span>);
-load(<span class="string">'Z.mat'</span>);
+load(<span class="string">'F.mat'</span>); <span class="comment">% Load the dataset F</span>
+load(<span class="string">'N.mat'</span>); <span class="comment">% Load the dataset N</span>
+load(<span class="string">'O.mat'</span>); <span class="comment">% Load the dataset O</span>
+load(<span class="string">'S.mat'</span>); <span class="comment">% Load the dataset S</span>
+load(<span class="string">'Z.mat'</span>); <span class="comment">% Load the dataset Z</span>
 
-F = F(:,1:50);
-N = N(:,1:50);
-O = O(:,1:50);
-S = S(:,1:50);
-Z = Z(:,1:50);
+F = F(:,1:50); <span class="comment">% Select part of the dataset F</span>
+N = N(:,1:50); <span class="comment">% Select part of the dataset N</span>
+O = O(:,1:50); <span class="comment">% Select part of the dataset O</span>
+S = S(:,1:50); <span class="comment">% Select part of the dataset S</span>
+Z = Z(:,1:50); <span class="comment">% Select part of the dataset Z</span>
 
-Fs = 173.61;
-N_shift = length(F);
-frequencies_shifted = (linspace(-pi*Fs, Fs*(pi - (2*pi)/N_shift), N_shift) + (Fs*pi)/(N_shift)*mod(N_shift, 2))';
+Fs = 173.61; <span class="comment">% Defining the sampling frequency</span>
+N_shift = length(F); <span class="comment">% Definig a variable to hold the length of the dataset</span>
+frequencies_shifted = (linspace(-pi*Fs, Fs*(pi - (2*pi)/N_shift), N_shift) + (Fs*pi)/(N_shift)*mod(N_shift, 2))'; <span class="comment">% Compute the shifted frequencies for clarity in analysis</span>
 
-ffft = fft(F);
-ffft = fftshift(ffft);
+ffft = fft(F); <span class="comment">% Computing the Fourier transform for the dataset F</span>
+ffft = fftshift(ffft); <span class="comment">% Shifting the Fourier transform for clarity in analysis</span>
 
-nfft = fft(N);
-nfft = fftshift(nfft);
+nfft = fft(N); <span class="comment">% Computing the Fourier transform for the dataset N</span>
+nfft = fftshift(nfft); <span class="comment">% Shifting the Fourier transform for clarity in analysis</span>
 
-offt = fft(O);
-offt = fftshift(offt);
+offt = fft(O); <span class="comment">% Computing the Fourier transform for the dataset O</span>
+offt = fftshift(offt); <span class="comment">% Shifting the Fourier transform for clarity in analysis</span>
 
-sfft = fft(S);
-sfft = fftshift(sfft);
+sfft = fft(S); <span class="comment">% Computing the Fourier transform for the dataset S</span>
+sfft = fftshift(sfft); <span class="comment">% Shifting the Fourier transform for clarity in analysis</span>
 
-zfft = fft(Z);
-zfft = fftshift(zfft);
+zfft = fft(Z); <span class="comment">% Computing the Fourier transform for the dataset Z</span>
+zfft = fftshift(zfft); <span class="comment">% Shifting the Fourier transform for clarity in analysis</span>
 
 
-train = [sfft,ffft,nfft,offt,zfft];
-[U,SS,VV] = svd(train,<span class="string">'econ'</span>);
-train_weights = U' * train;
+train = [sfft,ffft,nfft,offt,zfft]; <span class="comment">% Creating a matrix of the fourier transformed datasets</span>
+[U,SS,VV] = svd(train,<span class="string">'econ'</span>); <span class="comment">% Find the eigenvectors of the train matrix</span>
+train_weights = U' * train; <span class="comment">% Calculating the weights for each eigenvector to represent the train matrix</span>
 
 figure
 <span class="comment">% Use the Third EigenFFT for the 26 Hz signal</span>
-plot(frequencies_shifted,abs(U(:,3)))
-title(<span class="string">'Eigenfrequency'</span>)
-xlabel(<span class="string">'Frequency [Hz]'</span>)
-ylabel(<span class="string">'Amplitude'</span>)
-axis([-120 120 0 0.12])
-</pre><img vspace="5" hspace="5" src="EEG_Algorithm_01.png" alt=""> <p>TEST CODE%</p><pre class="codeinput">load(<span class="string">'F.mat'</span>);
-load(<span class="string">'N.mat'</span>);
-load(<span class="string">'O.mat'</span>);
-load(<span class="string">'S.mat'</span>);
-load(<span class="string">'Z.mat'</span>);
+plot(frequencies_shifted,abs(U(:,3))) <span class="comment">% Plot the eigenfrequencies</span>
+title(<span class="string">'Eigenfrequency'</span>) <span class="comment">% set the title of the plot</span>
+xlabel(<span class="string">'Frequency [Hz]'</span>) <span class="comment">% set the x-label of the plot</span>
+ylabel(<span class="string">'Amplitude'</span>) <span class="comment">% set the y-label of the plot</span>
+axis([-120 120 0 0.12]) <span class="comment">% set the axis limits</span>
+</pre><img vspace="5" hspace="5" src="EEG_Algorithm_01.png" alt=""> <p>TEST CODE</p><pre class="codeinput">load(<span class="string">'F.mat'</span>); <span class="comment">% Load the dataset F</span>
+load(<span class="string">'N.mat'</span>); <span class="comment">% Load the dataset N</span>
+load(<span class="string">'O.mat'</span>); <span class="comment">% Load the dataset O</span>
+load(<span class="string">'S.mat'</span>); <span class="comment">% Load the dataset S</span>
+load(<span class="string">'Z.mat'</span>); <span class="comment">% Load the dataset Z</span>
 
-F2 = F(:,51:end);
-N2 = N(:,51:end);
-O2 = O(:,51:end);
-S2 = S(:,51:end);
-Z2 = Z(:,51:end);
+F2 = F(:,51:end); <span class="comment">% Select part of the dataset F</span>
+N2 = N(:,51:end); <span class="comment">% Select part of the dataset N</span>
+O2 = O(:,51:end); <span class="comment">% Select part of the dataset O</span>
+S2 = S(:,51:end); <span class="comment">% Select part of the dataset S</span>
+Z2 = Z(:,51:end); <span class="comment">% Select part of the dataset Z</span>
 
-ffft = fft(F2);
-ffft = fftshift(ffft);
+ffft = fft(F2); <span class="comment">% Computing the Fourier transform for the dataset F2</span>
+ffft = fftshift(ffft); <span class="comment">% Shifting the Fourier transform for clarity in analysis</span>
 
-nfft = fft(N2);
-nfft = fftshift(nfft);
+nfft = fft(N2); <span class="comment">% Computing the Fourier transform for the dataset N2</span>
+nfft = fftshift(nfft); <span class="comment">% Shifting the Fourier transform for clarity in analysis</span>
 
-offt = fft(O2);
-offt = fftshift(offt);
+offt = fft(O2); <span class="comment">% Computing the Fourier transform for the dataset O2</span>
+offt = fftshift(offt); <span class="comment">% Shifting the Fourier transform for clarity in analysis</span>
 
-sfft = fft(S2);
-sfft = fftshift(sfft);
+sfft = fft(S2); <span class="comment">% Computing the Fourier transform for the dataset S2</span>
+sfft = fftshift(sfft); <span class="comment">% Shifting the Fourier transform for clarity in analysis</span>
 
-zfft = fft(Z2);
-zfft = fftshift(zfft);
+zfft = fft(Z2); <span class="comment">% Computing the Fourier transform for the dataset Z2</span>
+zfft = fftshift(zfft); <span class="comment">% Shifting the Fourier transform for clarity in analysis</span>
 
-test = [sfft,ffft,nfft,offt,zfft];
-test_weights = U' * test;
+test = [sfft,ffft,nfft,offt,zfft]; <span class="comment">% Creating a matrix 'test' to hold all the fourier transformed datasets</span>
+test_weights = U' * test; <span class="comment">% Find linear combinations of the eigenvectors to represent the test matrix</span>
 
-counter = 0;
+counter = 0; <span class="comment">% Initializing the variable counter</span>
 
-<span class="keyword">for</span> l=1:length(test_weights(1,:))
+<span class="keyword">for</span> l=1:length(test_weights(1,:)) <span class="comment">% Sweeping through the test_weights matrix</span>
     <span class="comment">% Using 51 eigen transforms we get 88.4% accuracy</span>
-    [dist,index] = min(vecnorm(test_weights(:,l) - train_weights(:,1:51)));
-    <span class="keyword">if</span> l &lt;= 50 &amp;&amp; (1 &lt;= index) &amp;&amp; (index &lt;= 50)
+    [dist,index] = min(vecnorm(test_weights(:,l) - train_weights(:,1:51))); <span class="comment">% Computing the euclidian distance between the test and train sets</span>
+    <span class="keyword">if</span> l &lt;= 50 &amp;&amp; (1 &lt;= index) &amp;&amp; (index &lt;= 50) <span class="comment">% Defining thresholds for accuracy calculation</span>
         counter = counter + 1;
     <span class="keyword">elseif</span> (51 &lt;= l) &amp;&amp; (51 &lt;= index)
         counter = counter + 1;
     <span class="keyword">end</span>
 <span class="keyword">end</span>
-accuracy = counter / length(test_weights(:,1)) * 100
+accuracy = counter / length(test_weights(:,1)) * 100 <span class="comment">% Computing the accuracy and printing it in the Command Window</span>
 </pre><pre class="codeoutput">
 accuracy =
 
@@ -164,100 +162,98 @@ accuracy =
 
 </pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
-% TRAINING CODE %
-
-
+% TRAINING CODE
 clear all
 close all
 
-load('F.mat');
-load('N.mat');
-load('O.mat');
-load('S.mat');
-load('Z.mat');
+load('F.mat'); % Load the dataset F
+load('N.mat'); % Load the dataset N
+load('O.mat'); % Load the dataset O
+load('S.mat'); % Load the dataset S
+load('Z.mat'); % Load the dataset Z
 
-F = F(:,1:50);
-N = N(:,1:50);
-O = O(:,1:50);
-S = S(:,1:50);
-Z = Z(:,1:50);
+F = F(:,1:50); % Select part of the dataset F
+N = N(:,1:50); % Select part of the dataset N
+O = O(:,1:50); % Select part of the dataset O
+S = S(:,1:50); % Select part of the dataset S
+Z = Z(:,1:50); % Select part of the dataset Z
 
-Fs = 173.61;
-N_shift = length(F);
-frequencies_shifted = (linspace(-pi*Fs, Fs*(pi - (2*pi)/N_shift), N_shift) + (Fs*pi)/(N_shift)*mod(N_shift, 2))';
+Fs = 173.61; % Defining the sampling frequency
+N_shift = length(F); % Definig a variable to hold the length of the dataset
+frequencies_shifted = (linspace(-pi*Fs, Fs*(pi - (2*pi)/N_shift), N_shift) + (Fs*pi)/(N_shift)*mod(N_shift, 2))'; % Compute the shifted frequencies for clarity in analysis
 
-ffft = fft(F);
-ffft = fftshift(ffft);
+ffft = fft(F); % Computing the Fourier transform for the dataset F
+ffft = fftshift(ffft); % Shifting the Fourier transform for clarity in analysis
 
-nfft = fft(N);
-nfft = fftshift(nfft);
+nfft = fft(N); % Computing the Fourier transform for the dataset N
+nfft = fftshift(nfft); % Shifting the Fourier transform for clarity in analysis
 
-offt = fft(O);
-offt = fftshift(offt);
+offt = fft(O); % Computing the Fourier transform for the dataset O
+offt = fftshift(offt); % Shifting the Fourier transform for clarity in analysis
 
-sfft = fft(S);
-sfft = fftshift(sfft);
+sfft = fft(S); % Computing the Fourier transform for the dataset S
+sfft = fftshift(sfft); % Shifting the Fourier transform for clarity in analysis
 
-zfft = fft(Z);
-zfft = fftshift(zfft);
+zfft = fft(Z); % Computing the Fourier transform for the dataset Z
+zfft = fftshift(zfft); % Shifting the Fourier transform for clarity in analysis
 
 
-train = [sfft,ffft,nfft,offt,zfft];
-[U,SS,VV] = svd(train,'econ');
-train_weights = U' * train;
+train = [sfft,ffft,nfft,offt,zfft]; % Creating a matrix of the fourier transformed datasets
+[U,SS,VV] = svd(train,'econ'); % Find the eigenvectors of the train matrix
+train_weights = U' * train; % Calculating the weights for each eigenvector to represent the train matrix
 
 figure
 % Use the Third EigenFFT for the 26 Hz signal
-plot(frequencies_shifted,abs(U(:,3)))
-title('Eigenfrequency')
-xlabel('Frequency [Hz]')
-ylabel('Amplitude')
-axis([-120 120 0 0.12])
+plot(frequencies_shifted,abs(U(:,3))) % Plot the eigenfrequencies
+title('Eigenfrequency') % set the title of the plot
+xlabel('Frequency [Hz]') % set the x-label of the plot
+ylabel('Amplitude') % set the y-label of the plot
+axis([-120 120 0 0.12]) % set the axis limits
 
 %%
-% TEST CODE%
+% TEST CODE
 
-load('F.mat');
-load('N.mat');
-load('O.mat');
-load('S.mat');
-load('Z.mat');
+load('F.mat'); % Load the dataset F
+load('N.mat'); % Load the dataset N
+load('O.mat'); % Load the dataset O
+load('S.mat'); % Load the dataset S
+load('Z.mat'); % Load the dataset Z
 
-F2 = F(:,51:end);
-N2 = N(:,51:end);
-O2 = O(:,51:end);
-S2 = S(:,51:end);
-Z2 = Z(:,51:end);
+F2 = F(:,51:end); % Select part of the dataset F
+N2 = N(:,51:end); % Select part of the dataset N
+O2 = O(:,51:end); % Select part of the dataset O
+S2 = S(:,51:end); % Select part of the dataset S
+Z2 = Z(:,51:end); % Select part of the dataset Z
 
-ffft = fft(F2);
-ffft = fftshift(ffft);
+ffft = fft(F2); % Computing the Fourier transform for the dataset F2
+ffft = fftshift(ffft); % Shifting the Fourier transform for clarity in analysis
 
-nfft = fft(N2);
-nfft = fftshift(nfft);
+nfft = fft(N2); % Computing the Fourier transform for the dataset N2
+nfft = fftshift(nfft); % Shifting the Fourier transform for clarity in analysis
 
-offt = fft(O2);
-offt = fftshift(offt);
+offt = fft(O2); % Computing the Fourier transform for the dataset O2
+offt = fftshift(offt); % Shifting the Fourier transform for clarity in analysis
 
-sfft = fft(S2);
-sfft = fftshift(sfft);
+sfft = fft(S2); % Computing the Fourier transform for the dataset S2
+sfft = fftshift(sfft); % Shifting the Fourier transform for clarity in analysis
 
-zfft = fft(Z2);
-zfft = fftshift(zfft);
+zfft = fft(Z2); % Computing the Fourier transform for the dataset Z2
+zfft = fftshift(zfft); % Shifting the Fourier transform for clarity in analysis
 
-test = [sfft,ffft,nfft,offt,zfft];
-test_weights = U' * test;
+test = [sfft,ffft,nfft,offt,zfft]; % Creating a matrix 'test' to hold all the fourier transformed datasets
+test_weights = U' * test; % Find linear combinations of the eigenvectors to represent the test matrix
 
-counter = 0;
+counter = 0; % Initializing the variable counter
 
-for l=1:length(test_weights(1,:))
+for l=1:length(test_weights(1,:)) % Sweeping through the test_weights matrix
     % Using 51 eigen transforms we get 88.4% accuracy
-    [dist,index] = min(vecnorm(test_weights(:,l) - train_weights(:,1:51)));
-    if l <= 50 && (1 <= index) && (index <= 50)
+    [dist,index] = min(vecnorm(test_weights(:,l) - train_weights(:,1:51))); % Computing the euclidian distance between the test and train sets
+    if l <= 50 && (1 <= index) && (index <= 50) % Defining thresholds for accuracy calculation
         counter = counter + 1;
     elseif (51 <= l) && (51 <= index)
         counter = counter + 1;
     end
 end
-accuracy = counter / length(test_weights(:,1)) * 100
+accuracy = counter / length(test_weights(:,1)) * 100 % Computing the accuracy and printing it in the Command Window
 ##### SOURCE END #####
 --></body></html>
