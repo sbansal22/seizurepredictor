@@ -67,30 +67,40 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
   </style></head><body><div class="content"><pre class="codeinput"><span class="keyword">function</span> rangedfft = Rangefinder(transform, low, high)
-
+<span class="comment">% Function used to zero high frequency signals</span>
+<span class="comment">% INPUTS: transform - the FFT vector</span>
+<span class="comment">%         low - lower index threshold</span>
+<span class="comment">%         high - higher index threshold</span>
+<span class="comment">% OUTPUT: rangedfft - FFT vector with zeroed values lower than "low" and</span>
+<span class="comment">%                     higher than "high"</span>
 <span class="keyword">for</span> l=1:max(size(transform))
-    <span class="keyword">if</span> l &lt;= low
-        transform(l) = 0;
+    <span class="keyword">if</span> l &lt;= low <span class="comment">% Compare index to the lower value</span>
+        transform(l) = 0; <span class="comment">% If the index is below the "low" index, zero it</span>
     <span class="keyword">end</span>
-    <span class="keyword">if</span> l &gt;= high
-        transform(l) = 0;
+    <span class="keyword">if</span> l &gt;= high <span class="comment">% Compare index to the higher value</span>
+        transform(l) = 0; <span class="comment">% If the index is larger the "high" index, zero it</span>
     <span class="keyword">end</span>
 <span class="keyword">end</span>
-rangedfft = transform;
+rangedfft = transform; <span class="comment">% Set the output equal to the filtered FFT</span>
 <span class="keyword">end</span>
 </pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 function rangedfft = Rangefinder(transform, low, high)
-
+% Function used to zero high frequency signals
+% INPUTS: transform - the FFT vector
+%         low - lower index threshold
+%         high - higher index threshold
+% OUTPUT: rangedfft - FFT vector with zeroed values lower than "low" and
+%                     higher than "high"
 for l=1:max(size(transform))
-    if l <= low
-        transform(l) = 0;
+    if l <= low % Compare index to the lower value
+        transform(l) = 0; % If the index is below the "low" index, zero it
     end
-    if l >= high
-        transform(l) = 0;
+    if l >= high % Compare index to the higher value
+        transform(l) = 0; % If the index is larger the "high" index, zero it
     end
 end
-rangedfft = transform;
+rangedfft = transform; % Set the output equal to the filtered FFT
 end
 ##### SOURCE END #####
 --></body></html>
