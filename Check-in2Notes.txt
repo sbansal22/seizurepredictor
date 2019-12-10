@@ -1,3 +1,3 @@
-Don't call the motion model, the motion model
-Talk more about the circuit output measurement process
-Add more plots of the average filter
+( )Don't call the motion model, the motion model
+(D)Talk more about the circuit output measurement process
+( )Add more plots of the average filter
