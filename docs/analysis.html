@@ -29,7 +29,7 @@ body {font-family: "Lato", sans-serif}
 </div>
 
   <!-- The Description Section -->
-  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="description">
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:1200px" id="description">
     <h2 class="w3-wide">ANALYSIS</h2>
     <h4 class="w3-wide">WE WERE ABLE TO CORRECTLY IDENTIFY IF A SEIZURE WAS PRESENT IN AN EEG SIGNAL 96.8% OF THE TIME!</h4>
     <h6 class="w3-wide">Please note, all the code can be found in its respective subsection.</h6>
@@ -62,9 +62,9 @@ body {font-family: "Lato", sans-serif}
   
     <h3 class="w3-wide">CLASSIFYING DATA: PRINCIPLE COMPONENT ANALYSIS</h3>
     <p class="w3-justify">We separate the data into a test and training set.  As the data has already been randomized by the collector of the data, we select the training set as the first 50 columns and the test set for the last 50.  Once we have done this, we perform a discrete Fourier transform on the data to find out how much of each frequency is present.  As we explained on the scientific background tab, an increased frequency of the signal and increased magnitude are two common characteristics of seizure EEG readings.  This is depicted in the Fourier analysis of the following two signals:</p>
-      <img src="EEG Comparison.jpg" class="w3-round w3-margin-bottom" alt="Neuron" style="width:120%" class="center">
+    <img src="EEG Comparison.jpg" class="w3-round w3-margin-bottom" alt="Neuron" style="width:100%" class="w3-centered">
     <p class="w3-justify">We use an algorithm similar to the faces algorithm from QEA 1 Module 2 on the Fourier transformations of each of the training sets.  We perform principal component analysis (PCA) on the training set to define a new set of basis vectors for the data.  Each basis or Eigenvector represents a frequency that is the most variant across the dataset.  A visualization of an eigenfrequency can be found below:</p>
-      <img src="eigenfrequency.jpg" class="w3-round w3-margin-bottom" alt="Neuron" style="width:120%" class="center">
+      <img src="eigenfrequency.jpg" class="w3-round w3-margin-bottom" alt="Neuron" style="width:100%" class="center">
     <p class="w3-justify">The spikes correspond with the frequencies that have the most variation across the training set. For example, we can see the highest spike occurring at 22 Hz.  This means that there is lots of variation (because it is one of the first eigenfrequencies from PCA) at this frequency in the training set.</p>
     <p class="w3-justify">Using the test set, we project each of the Fouier transformations onto the basis vectors defined by the PCA of the training set.  We then find the Euclidean Distance between the training and test sets in order to classify the test signal as either a seizure or not.  The code used in this analysis can be found: <a href="EEG_Algorithm.html" style="font-weight:bold">here.</a>  Using this algorithm, we classified data correctly 88.4% of the time</p>
   
@@ -73,30 +73,30 @@ body {font-family: "Lato", sans-serif}
 
     <h3 class="w3-wide">CLASSIFYING DATA: FILTERING AND SMOOTHING DATA</h3>
     <p class="w3-justify">To increase the ease of analysing the data, we use a moving average filter in order to smooth out some features of the data that we don't necessarily need to a full precision. We used difference equations on the Fourier transformed data to enable ourselves to focus on more useful aspects of the data. A difference equation defines the sequence by specifying the relation between the nth element of the sequence and various quantities, including (potentially) previous terms in the sequence. Before any sort of filtering, the eigenfrequencies looked as in the graph attached to the "Classifying Data" tab.  Furthermore, we filtered the data such that only frequencies between 0 Hz and 120 Hz were present in the analysis. The following plot demonstrates the filtering that we did:</p>
-    <img src="Filtering High Frequencies.jpg" class="w3-round w3-margin-bottom" alt="Unfiltered" style="width:160%" class="center">
-	<img src="eigenfrequency.jpg" class="w3-round w3-margin-bottom" alt="Unfiltered" style="width:120%" class="center">
+    <img src="Filtering High Frequencies.jpg" class="w3-round w3-margin-bottom" alt="Unfiltered" style="width:100%" class="center">
+	<img src="eigenfrequency.jpg" class="w3-round w3-margin-bottom" alt="Unfiltered" style="width:100%" class="center">
 	<p class="w3-justify">We tested a two point moving average filter. </p><br>
     <math>Filtered(x) = <sup>(x<sub>n</sub> + x<sub>n+1</sub>)</sup>&frasl;<sub>2</sub></math><br>
     <p class="w3-justify">Post filtering, this graph appears as follows:</p><br>
-    <img src="Moving Average Filter.jpg" class="w3-round w3-margin-bottom" alt="Filtered" style="width:120%" class="center">
+    <img src="2-Point Moving Average.jpg" class="w3-round w3-margin-bottom" alt="Filtered" style="width:100%" class="center">
 	<p class="w3-justify">We tested a three point moving average filter. </p><br>
     <math>Filtered(x) = <sup>(x<sub>n-1</sub> + x<sub>n</sub> + x<sub>n+1</sub>)</sup>&frasl;<sub>3</sub></math><br>
     <p class="w3-justify">Post filtering, this graph appears as follows:</p><br>
-    <img src="Moving Average Filter.jpg" class="w3-round w3-margin-bottom" alt="Filtered" style="width:120%" class="center">
+    <img src="3-Point Moving Average.jpg" class="w3-round w3-margin-bottom" alt="Filtered" style="width:100%" class="center">
 	<p class="w3-justify">We tested a four point moving average filter. </p><br>
     <math>Filtered(x) = <sup>(x<sub>n-2</sub> + x<sub>n-1</sub> + x<sub>n</sub> + x<sub>n+1</sub>)</sup>&frasl;<sub>4</sub></math><br>
     <p class="w3-justify">Post filtering, this graph appears as follows:</p><br>
-    <img src="Moving Average Filter.jpg" class="w3-round w3-margin-bottom" alt="Filtered" style="width:120%" class="center">
+    <img src="4-Point Moving Average.jpg" class="w3-round w3-margin-bottom" alt="Filtered" style="width:100%" class="center">
     <p class="w3-justify">We tested a five point moving average filter. </p><br>
     <math>Filtered(x) = <sup>(x<sub>n-2</sub> + x<sub>n-1</sub> + x<sub>n</sub> + x<sub>n+1</sub> + x<sub>n+2</sub>)</sup>&frasl;<sub>5</sub></math><br>
     <p class="w3-justify">Post filtering, this graph appears as follows:</p><br>
-	 <img src="Moving Average Filter.jpg" class="w3-round w3-margin-bottom" alt="Filtered" style="width:120%" class="center">
+	 <img src="5-Point Moving Average.jpg" class="w3-round w3-margin-bottom" alt="Filtered" style="width:100%" class="center">
 	<p class="w3-justify">We used a seven point moving average filter. </p><br>
     <math>Filtered(x) = <sup>(x<sub>n-3</sub> + x<sub>n-2</sub> + x<sub>n-1</sub> + x<sub>n</sub> + x<sub>n+1</sub> + x<sub>n+2</sub> + x<sub>n+3</sub>)</sup>&frasl;<sub>7</sub></math><br>
     <p class="w3-justify">Post filtering, this graph appears as follows:</p><br>
-    <img src="Moving Average Filter.jpg" class="w3-round w3-margin-bottom" alt="Filtered" style="width:120%" class="center">
+    <img src="7-Point Moving Average.jpg" class="w3-round w3-margin-bottom" alt="Filtered" style="width:100%" class="center">
     <p class="w3-justify">The function used to zero high frequencies can be found <a href="Rangefinder.html" style="font-weight:bold">here.</a>  The algorithm code used in this analysis can be found: <a href="EEG_Filter_Algorithm.html" style="font-weight:bold">here.</a>  Using this algorithm, we acheived the following accuracy for various number of points included in the moving average filter.</p>
-	<table style="width:100%">
+	<table style="width:80%">
 		<tr>
 			<th>Number of Points in the Moving Average Filter</th>
 			<th>Accuracy</th>
