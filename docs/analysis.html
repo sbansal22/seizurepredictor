@@ -72,8 +72,9 @@ body {font-family: "Lato", sans-serif}
     <p class="w3-justify">For this algorithm, we considered classifying the data based the average magnitude in the Fourier transfrom.  We set the threshold by finding the average value of the Fourier transform.  Once we have found the average of all data, we subtract a percentage of the average of only the seizure data.  For the test data, we find the fourier transform, find the average magnitude and compare it to the threshold.  If the average value is greater than the threshold, we classify the data as a seizure.  If not, we classify the signal as normal brainwaves.  The code we used in this algorithm can be found: 	<a href="EEG_Magnitude_Algorithm.html" style="font-weight:bold">here.</a>  This algorithm classified the data correctly 96.8% of the time.</p>
 
     <h3 class="w3-wide">CLASSIFYING DATA: FILTERING AND SMOOTHING DATA</h3>
-    <p class="w3-justify">To increase the ease of analysing the data, we use a moving average filter in order to smooth out some features of the data that we don't necessarily need to a full precision. We used difference equations on the Fourier transformed data to enable ourselves to focus on more useful aspects of the data. A difference equation defines the sequence by specifying the relation between the nth element of the sequence and various quantities, including (potentially) previous terms in the sequence. Before any sort of filtering, the eigenfrequencies looked as in the graph attached to the "Classifying Data" tab.  Furthermore, we filtered the data such that only frequencies between 0 Hz and 120 Hz were present in the analysis.</p>
-    <img src="eigenfrequency.jpg" class="w3-round w3-margin-bottom" alt="Unfiltered" style="width:120%" class="center">
+    <p class="w3-justify">To increase the ease of analysing the data, we use a moving average filter in order to smooth out some features of the data that we don't necessarily need to a full precision. We used difference equations on the Fourier transformed data to enable ourselves to focus on more useful aspects of the data. A difference equation defines the sequence by specifying the relation between the nth element of the sequence and various quantities, including (potentially) previous terms in the sequence. Before any sort of filtering, the eigenfrequencies looked as in the graph attached to the "Classifying Data" tab.  Furthermore, we filtered the data such that only frequencies between 0 Hz and 120 Hz were present in the analysis. The following plot demonstrates the filtering that we did:</p>
+    <img src="Filtering High Frequencies.jpg" class="w3-round w3-margin-bottom" alt="Unfiltered" style="width:160%" class="center">
+	<img src="eigenfrequency.jpg" class="w3-round w3-margin-bottom" alt="Unfiltered" style="width:120%" class="center">
 	<p class="w3-justify">We tested a two point moving average filter. </p><br>
     <math>Filtered(x) = <sup>(x<sub>n</sub> + x<sub>n+1</sub>)</sup>&frasl;<sub>2</sub></math><br>
     <p class="w3-justify">Post filtering, this graph appears as follows:</p><br>
@@ -94,7 +95,37 @@ body {font-family: "Lato", sans-serif}
     <math>Filtered(x) = <sup>(x<sub>n-3</sub> + x<sub>n-2</sub> + x<sub>n-1</sub> + x<sub>n</sub> + x<sub>n+1</sub> + x<sub>n+2</sub> + x<sub>n+3</sub>)</sup>&frasl;<sub>7</sub></math><br>
     <p class="w3-justify">Post filtering, this graph appears as follows:</p><br>
     <img src="Moving Average Filter.jpg" class="w3-round w3-margin-bottom" alt="Filtered" style="width:120%" class="center">
-    <p class="w3-justify">The function used to zero high frequencies can be found <a href="Rangefinder.html" style="font-weight:bold">here.</a>  The algorithm code used in this analysis can be found: <a href="EEG_Filter_Algorithm.html" style="font-weight:bold">here.</a>  Using this algorithm, we classified data correctly 80% of the time</p>
+    <p class="w3-justify">The function used to zero high frequencies can be found <a href="Rangefinder.html" style="font-weight:bold">here.</a>  The algorithm code used in this analysis can be found: <a href="EEG_Filter_Algorithm.html" style="font-weight:bold">here.</a>  Using this algorithm, we acheived the following accuracy for various number of points included in the moving average filter.</p>
+	<table style="width:100%">
+		<tr>
+			<th>Number of Points in the Moving Average Filter</th>
+			<th>Accuracy</th>
+		</tr>
+		<tr>
+			<th>1</th>
+			<th>88.4%</th>
+		</tr>
+		<tr>
+			<th>2</th>
+			<th>82%</th>
+		</tr>
+		<tr>
+			<th>3</th>
+			<th>80.4%</th>
+		</tr>
+		<tr>
+			<th>4</th>
+			<th>80%</th>
+		</tr>
+		<tr>
+			<th>5</th>
+			<th>80%</th>
+		</tr>
+		<tr>
+			<th>7</th>
+			<th>80%</th>
+		</tr>
+	</table>
     </p>
   
   </div>
