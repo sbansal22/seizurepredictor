@@ -87,14 +87,14 @@ train_weights = U' * data;
 
 % Averaging filter applied to the eigenvectors
 for l=1:size(U,2)
-    U(:,l) = movmean(U(:,l),1);
+    U(:,l) = movmean(U(:,l),3);
 end
 
 %figure;
 %plot(frequencies_shifted,abs(U(:,6)))
 %xlabel('Frequencies [Hz]')
 %ylabel('Magnitude')
-%title('Eigenvector 9-Point Moving Average')
+%title('Eigenvector 4-Point Moving Average')
 %set(gca,'FontSize',15)
 %xlim([-120 120])
 
