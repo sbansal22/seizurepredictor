@@ -74,7 +74,23 @@ body {font-family: "Lato", sans-serif}
     <h3 class="w3-wide">CLASSIFYING DATA: FILTERING AND SMOOTHING DATA</h3>
     <p class="w3-justify">To increase the ease of analysing the data, we use a moving average filter in order to smooth out some features of the data that we don't necessarily need to a full precision. We used difference equations on the Fourier transformed data to enable ourselves to focus on more useful aspects of the data. A difference equation defines the sequence by specifying the relation between the nth element of the sequence and various quantities, including (potentially) previous terms in the sequence. Before any sort of filtering, the eigenfrequencies looked as in the graph attached to the "Classifying Data" tab.  Furthermore, we filtered the data such that only frequencies between 0 Hz and 120 Hz were present in the analysis.</p>
     <img src="eigenfrequency.jpg" class="w3-round w3-margin-bottom" alt="Unfiltered" style="width:120%" class="center">
-    <p class="w3-justify">We used a seven point moving average filter. </p><br>
+	<p class="w3-justify">We tested a two point moving average filter. </p><br>
+    <math>Filtered(x) = <sup>(x<sub>n</sub> + x<sub>n+1</sub>)</sup>&frasl;<sub>2</sub></math><br>
+    <p class="w3-justify">Post filtering, this graph appears as follows:</p><br>
+    <img src="Moving Average Filter.jpg" class="w3-round w3-margin-bottom" alt="Filtered" style="width:120%" class="center">
+	<p class="w3-justify">We tested a three point moving average filter. </p><br>
+    <math>Filtered(x) = <sup>(x<sub>n-1</sub> + x<sub>n</sub> + x<sub>n+1</sub>)</sup>&frasl;<sub>3</sub></math><br>
+    <p class="w3-justify">Post filtering, this graph appears as follows:</p><br>
+    <img src="Moving Average Filter.jpg" class="w3-round w3-margin-bottom" alt="Filtered" style="width:120%" class="center">
+	<p class="w3-justify">We tested a four point moving average filter. </p><br>
+    <math>Filtered(x) = <sup>(x<sub>n-2</sub> + x<sub>n-1</sub> + x<sub>n</sub> + x<sub>n+1</sub>)</sup>&frasl;<sub>4</sub></math><br>
+    <p class="w3-justify">Post filtering, this graph appears as follows:</p><br>
+    <img src="Moving Average Filter.jpg" class="w3-round w3-margin-bottom" alt="Filtered" style="width:120%" class="center">
+    <p class="w3-justify">We tested a five point moving average filter. </p><br>
+    <math>Filtered(x) = <sup>(x<sub>n-2</sub> + x<sub>n-1</sub> + x<sub>n</sub> + x<sub>n+1</sub> + x<sub>n+2</sub>)</sup>&frasl;<sub>5</sub></math><br>
+    <p class="w3-justify">Post filtering, this graph appears as follows:</p><br>
+	 <img src="Moving Average Filter.jpg" class="w3-round w3-margin-bottom" alt="Filtered" style="width:120%" class="center">
+	<p class="w3-justify">We used a seven point moving average filter. </p><br>
     <math>Filtered(x) = <sup>(x<sub>n-3</sub> + x<sub>n-2</sub> + x<sub>n-1</sub> + x<sub>n</sub> + x<sub>n+1</sub> + x<sub>n+2</sub> + x<sub>n+3</sub>)</sup>&frasl;<sub>7</sub></math><br>
     <p class="w3-justify">Post filtering, this graph appears as follows:</p><br>
     <img src="Moving Average Filter.jpg" class="w3-round w3-margin-bottom" alt="Filtered" style="width:120%" class="center">
@@ -92,7 +108,7 @@ body {font-family: "Lato", sans-serif}
     <div class="w3-row w3-padding-32">
       <div class="w3-col w3-large w3-center">
         <i class="fa fa-map-marker" style="max-width:800px"></i>Olin College of Engineering, Needham MA<br>
-        <i class="fa fa-envelope" style="max-width:800px"> </i> Email: sbansal@olin.edu<br>
+        <i class="fa fa-envelope" style="max-width:800px"> </i> Email: sbansal, tjagielski (@olin.edu)<br>
       </div>
       
     </div>
@@ -101,10 +117,6 @@ body {font-family: "Lato", sans-serif}
 <!-- End Page Content -->
 </div>
 
-<!-- Footer -->
-<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
-  <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-</footer>
 <script>
 // Automatic Slideshow - change image every 4 seconds
 var myIndex = 0;
