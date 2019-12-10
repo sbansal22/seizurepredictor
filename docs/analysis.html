@@ -73,7 +73,8 @@ body {font-family: "Lato", sans-serif}
 
     <h3 class="w3-wide">CLASSIFYING DATA: FILTERING AND SMOOTHING DATA</h3>
     <p class="w3-justify">To increase the ease of analysing the data, we use a moving average filter in order to smooth out some features of the data that we don't necessarily need to a full precision. We used difference equations on the Fourier transformed data to enable ourselves to focus on more useful aspects of the data. A difference equation defines the sequence by specifying the relation between the nth element of the sequence and various quantities, including (potentially) previous terms in the sequence. Before any sort of filtering, the eigenfrequencies looked as in the graph attached to the "Classifying Data" tab.  Furthermore, we filtered the data such that only frequencies between 0 Hz and 120 Hz were present in the analysis. The following plot demonstrates the filtering that we did:</p>
-    <img src="Filtering High Frequencies.jpg" class="w3-round w3-margin-bottom" alt="Unfiltered" style="width:100%" class="center">
+    <img src="Filtering High Frequencies.jpg" class="w3-round w3-margin-bottom" alt="Unfiltered" style="width:100%" class="center"><br>
+	<p class="w3-justify">An unfiltered eigenfrequency looks like this:</p>
 	<img src="eigenfrequency.jpg" class="w3-round w3-margin-bottom" alt="Unfiltered" style="width:100%" class="center">
 	<p class="w3-justify">We tested a two point moving average filter. </p><br>
     <math>Filtered(x) = <sup>(x<sub>n</sub> + x<sub>n+1</sub>)</sup>&frasl;<sub>2</sub></math><br>
