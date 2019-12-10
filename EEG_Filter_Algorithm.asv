@@ -87,7 +87,7 @@ train_weights = U' * data;
 
 % Averaging filter applied to the eigenvectors
 for l=1:size(U,2)
-    U(:,l) = movmean(U(:,l),7);
+    U(:,l) = movmean(U(:,l),3);
 end
 
 figure;
